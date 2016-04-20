@@ -15,7 +15,7 @@
  *  一句话弹出视窗
  *  
  *  @author Geminy
- *  @param vc            当前调用改方法的控制器
+ *  @param vc            调用该方法的控制器
  *  @param title         标题
  *  @param msg           内容
  *  @param cancel        取消按钮
