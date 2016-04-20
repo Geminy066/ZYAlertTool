@@ -22,7 +22,7 @@ static OkBlock okBlock;
 + (void)zy_showAlertInVC:(UIViewController *)vc withTitle:(NSString *)title msg:(NSString *)msg cancel:(NSString *)cancel cancelHandler:(void(^)())cancelHandler ok:(NSString *)ok okHandler:(void(^)())okHandler
 {
 
-    if ([UIDevice currentDevice].systemVersion.floatValue < 8.0) {
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
         UIAlertController *ac = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancelAct = [UIAlertAction actionWithTitle:cancel style:UIAlertActionStyleCancel handler:cancelHandler];
         UIAlertAction *okAct = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:okHandler];
