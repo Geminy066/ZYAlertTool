@@ -13,6 +13,9 @@ typedef void (^OkBlock)();
 static CancelBlock cancelBlock;
 static OkBlock okBlock;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wdeprecated-declarations"
+
 @interface  ZYAlertTool()<UIAlertViewDelegate>
 
 @end
@@ -49,3 +52,5 @@ static OkBlock okBlock;
     okBlock = nil;
 }
 @end
+
+#pragma clang diagnostic pop
