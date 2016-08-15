@@ -29,12 +29,12 @@ static OkBlock okBlock;
         UIAlertController *ac = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancelAct = [UIAlertAction actionWithTitle:cancel style:UIAlertActionStyleCancel handler:cancelHandler];
         UIAlertAction *okAct = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:okHandler];
-        [ac addAction:cancelAct];
-        [ac addAction:okAct];
+        if(cancel) [ac addAction:cancelAct];
+        if(ok) [ac addAction:okAct];
         [vc presentViewController:ac animated:YES completion:nil];
     } else {
-        cancelBlock = cancelHandler;
-        okBlock = okHandler;
+        if(cancel) cancelBlock = cancelHandler;
+        if(ok) okBlock = okHandler;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:cancel otherButtonTitles:ok, nil];
         [alert show];
     }
@@ -44,9 +44,9 @@ static OkBlock okBlock;
 + (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
-        cancelBlock();
-    } else if (buttonIndex == 1) {
-        okBlock();
+        !cancelBlock ? : cancelBlock();
+    } else {
+        !okBlock ? : okBlock();
     }
     cancelBlock = nil;
     okBlock = nil;
