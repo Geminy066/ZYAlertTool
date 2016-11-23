@@ -22,7 +22,7 @@ static OkBlock okBlock;
 
 @implementation ZYAlertTool
 
-+ (void)zy_showAlertInVC:(UIViewController *)vc withTitle:(NSString *)title msg:(NSString *)msg cancel:(NSString *)cancel cancelHandler:(void(^)())cancelHandler ok:(NSString *)ok okHandler:(void(^)())okHandler
++ (void)zy_showAlertWithTitle:(NSString *)title msg:(NSString *)msg cancel:(NSString *)cancel cancelHandler:(void(^)())cancelHandler ok:(NSString *)ok okHandler:(void(^)())okHandler
 {
 
     if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
@@ -31,7 +31,7 @@ static OkBlock okBlock;
         UIAlertAction *okAct = [UIAlertAction actionWithTitle:ok style:UIAlertActionStyleDefault handler:okHandler];
         if(cancel) [ac addAction:cancelAct];
         if(ok) [ac addAction:okAct];
-        [vc presentViewController:ac animated:YES completion:nil];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:ac animated:YES completion:nil];
     } else {
         if(cancel) cancelBlock = cancelHandler;
         if(ok) okBlock = okHandler;
