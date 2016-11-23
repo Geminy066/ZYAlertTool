@@ -23,5 +23,5 @@
  *  @param ok            确认按钮
  *  @param okHandler     点击确认后的操作
  */
-+ (void)zy_showAlertInVC:(UIViewController *)vc withTitle:(NSString *)title msg:(NSString *)msg cancel:(NSString *)cancel cancelHandler:(void(^)())cancelHandler ok:(NSString *)ok okHandler:(void(^)())okHandler;
++ (void)zy_showAlertWithTitle:(NSString *)title msg:(NSString *)msg cancel:(NSString *)cancel cancelHandler:(void(^)())cancelHandler ok:(NSString *)ok okHandler:(void(^)())okHandler;
 @end
